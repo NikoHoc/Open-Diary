@@ -1,3 +1,16 @@
+SETUP in gitbash
+1. mkdir opendiary
+2. npm-create-next-app@latest
+3. type app name
+4. click enter (yes)
+5. code .
+6. cd client
+7. npm i @clerk/nextjs @supabase/supabase-js
+8. npm i -Daisyui@latest
+9. npm run dev
+
+
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
