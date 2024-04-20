@@ -1,13 +1,22 @@
-
+"use client";
 import Wrapper from "@/components/global/Wrapper";
 import React from "react";
+import { useUser } from "@clerk/nextjs";
+import Link from "next/link";
 
 const page = (): React.ReactElement => {
-  return (
-    <Wrapper title="My Diary">
+  const { user, isLoaded, isSignedIn } = useUser();
+
+  if (!isLoaded) return <p>please wait...</p>;
+
+  return isSignedIn ? (
+    <Wrapper title={`${user.username}'s Diary`}>
       <p>INI MY DIARY</p>
     </Wrapper>
+  ) : (
+    <Link href="/sign-in">Sign In</Link>
   );
+
 };
 
 export default page;

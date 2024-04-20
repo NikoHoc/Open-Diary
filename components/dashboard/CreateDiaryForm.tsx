@@ -1,20 +1,22 @@
-import { createDiaryAction } from '@/actions/createDiaryAction'
-import React from 'react'
+import React from "react";
+import { createDiaryAction } from "@/actions/createDiaryAction";
 
-const createDiaryForm = ():React.ReactElement => {
+const CreateDiaryForm = (): React.ReactElement => {
   return (
-    //createDiaryAction fungsi yang ada di folder actions
-    <form action={createDiaryAction} className="flex flex-col gap-4 max-w-xl mx-auto">
-        <textarea 
-            className="h-52 p-4 text-lg border border-primary rounded" 
-            placeholder="Isi diary anda disini"
-            name="content">
-        </textarea>
-        <button type="submit" className="btn btn-primary">
-            Create Now
-        </button>
+    <form
+      action={createDiaryAction}
+      className="flex flex-col gap-4 max-w-xl mx-auto"
+    >
+      <textarea
+        placeholder="isi diary kamu disini..."
+        className="h-52 p-4 text-lg border border-primary textarea"
+        name="content"
+      />
+      <button className="btn btn-primary" type="submit">
+        Create Now
+      </button>
     </form>
-  )
-}
+  );
+};
 
-export default createDiaryForm
+export default CreateDiaryForm;

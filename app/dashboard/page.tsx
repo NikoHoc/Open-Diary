@@ -1,12 +1,13 @@
-import React from "react"
-import Wrapper from "@/components/global/Wrapper";
 import CreateDiaryForm from "@/components/dashboard/CreateDiaryForm";
+import Wrapper from "@/components/global/Wrapper";
+import React from "react";
 
 const page = (): React.ReactElement => {
-    return (
+  return (
     <Wrapper title="DASHBOARD">
-        <CreateDiaryForm/>
+      <CreateDiaryForm />
     </Wrapper>
-    );
+  );
 };
+
 export default page;
