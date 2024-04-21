@@ -1,4 +1,4 @@
-import { Comments, supabase } from "@/utils/supabase";
+import { IComments, supabase } from "@/utils/supabase";
 import Image from "next/image";
 import React from "react";
 
@@ -19,7 +19,7 @@ const CommentList = async ({ diary_id }: ParamsProps) => {
   return (
     <div className="flex flex-col gap-4">
       <div className="divider"></div>
-      {data.comments.map((comment: Comments) => {
+      {data.comments.map((comment: IComments) => {
         return (
           <div className="ml-4 card card-body card-bordered p-4 bg-base-200">
             <Image

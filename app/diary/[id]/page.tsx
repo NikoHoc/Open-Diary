@@ -1,35 +1,41 @@
-import React from "react";
-import PostContent from "@/components/global/(diary)/PostContent";
+import CreateCommentForm from "@/components/auth/CreateCommentForm";
+import CommentList from "@/components/global/(diary)/CommentList";
 import Wrapper from "@/components/global/Wrapper";
 import { supabase } from "@/utils/supabase";
-import { getUserData } from "@/utils/clerk";
+import Image from "next/image";
+import React from "react";
 
-const page = async (): Promise<React.ReactElement> => {
-  const { email } = await getUserData();
+type ParamsProps = {
+  params: {
+    id: number;
+  };
+};
 
+const page = async ({ params }: ParamsProps) => {
   const { data, error } = await supabase
     .from("diary")
     .select()
-    .order("created_at", { ascending: false })
-    .eq("email", email);
+    .eq("id", params.id)
+    .single();
 
   if (error) return <p>Please reload the page...</p>;
 
+  const posted_at = new Date(data.created_at).toLocaleDateString();
+
   return (
-    <Wrapper title="My Diary">
-      <div className="grid md:grid-cols-3 gap-4">
-        {data.map((diary) => {
-          return (
-            <PostContent
-              key={diary.id}
-              diary_id={diary.id}
-              avatar={diary.avatar}
-              content={diary.content}
-              email={diary.email}
-              username={diary.username}
-            />
-          );
-        })}
+    <Wrapper>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col mx-auto justify-center">
+          <Image src={data.avatar} alt={data.avatar} width={250} height={250} />
+          <i className="text-center">posted at {posted_at}</i>
+        </div>
+        <h3 className="italic text-xl font-bold">
+          ~{data.username || data.email}
+        </h3>
+        <p className="text-lg">{data.content}</p>
+
+        <CommentList diary_id={data.id} />
+        <CreateCommentForm diary_id={data.id} />
       </div>
     </Wrapper>
   );
