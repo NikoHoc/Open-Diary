@@ -5,6 +5,9 @@ import { supabase } from "@/utils/supabase";
 import Image from "next/image";
 import React from "react";
 
+export const revalidate = 0; // agar tidak perlu refresh
+
+
 type ParamsProps = {
   params: {
     id: number;
@@ -17,7 +20,7 @@ const page = async ({ params }: ParamsProps) => {
     .select()
     .eq("id", params.id)
     .single();
-
+  
   if (error) return <p>Please reload the page...</p>;
 
   const posted_at = new Date(data.created_at).toLocaleDateString();

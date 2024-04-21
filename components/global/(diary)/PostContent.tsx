@@ -13,7 +13,10 @@ const PostContent = ({
   return (
     <Link
       href={`/diary/${diary_id}`}
-      className="card card-body card-bordered shadow-lg bg-base-300 cursor-pointer duration-300 ease-in-out hover:shadow-xl hover:bg-secondary hover:scale-105 h-72"
+      className="card card-body card-bordered shadow-lg bg-base-300 
+      cursor-pointer duration-300 ease-in-out 
+      hover:shadow-xl hover:bg-secondary 
+      hover:scale-105 h-60"
     >
       <div className="flex items-center gap-4">
         <Image

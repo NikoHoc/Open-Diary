@@ -1,7 +1,8 @@
 "use client";
-
 import React, { RefObject, useRef } from "react";
 import { createCommentAction } from "@/actions/createCommentAction";
+import { useUser } from "@clerk/clerk-react";
+import Link from "next/link";
 
 type ParamsProps = {
   diary_id: number;
@@ -9,6 +10,7 @@ type ParamsProps = {
 
 const CreateCommentForm = ({ diary_id }: ParamsProps) => {
   const formRef: RefObject<HTMLFormElement> = useRef<HTMLFormElement>(null);
+  const { isSignedIn } = useUser();
 
   const resetForm = (): void => {
     setTimeout(() => {
@@ -16,7 +18,7 @@ const CreateCommentForm = ({ diary_id }: ParamsProps) => {
     }, 1000);
   };
 
-  return (
+  return isSignedIn? (
     <form
       action={createCommentAction}
       className="flex flex-col gap-4 mx-auto w-full"
@@ -33,7 +35,9 @@ const CreateCommentForm = ({ diary_id }: ParamsProps) => {
         Comment Now
       </button>
     </form>
-  );
+  ) : (
+    <Link className="btn btn-secondary flex flex-col gap-4 mx-auto" href="/sign-in">Sign In to Comment</Link>
+  )
 };
 
 export default CreateCommentForm;
