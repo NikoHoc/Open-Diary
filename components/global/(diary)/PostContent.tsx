@@ -1,10 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import {Diary} from "@/utils/supabase"
+import Link from "next/link";
 
-const PostContent = ({avatar, content, username, email}: Diary): React.ReactElement => {
+const PostContent = ({diary_id, avatar, content, username, email}: Diary): React.ReactElement => {
   return (
-    <div className="card card-body card-bordered shadow-lg bg-base-300 cursor-pointer duration-300 ease-in-out hover:shadow-xl hover:bg-secondary hover:scale-105 h-72">
+    
+    <Link href={`/diary/${diary_id}`} 
+    className="card card-body card-bordered shadow-lg bg-base-300 
+      cursor-pointer duration-300 ease-in-out hover:shadow-xl 
+      hover:bg-secondary hover:scale-105 h-72">
       <div className="flex items-center gap-4">
         <Image 
           src={avatar as string} 
@@ -15,7 +20,7 @@ const PostContent = ({avatar, content, username, email}: Diary): React.ReactElem
         <p className="font-semibold text-lg">{username || email}</p>
       </div>
       <p className="overflow-y-auto text-md">{content}</p>
-    </div>
+    </Link>
   );
 };
 

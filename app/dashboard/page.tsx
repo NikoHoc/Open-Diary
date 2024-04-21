@@ -1,5 +1,5 @@
-"use client"
-import CreateDiaryForm from "@/components/dashboard/CreateDiaryForm";
+"use client";
+import CreateDiaryForm from "@/components/auth/CreateDiaryForm";
 import Wrapper from "@/components/global/Wrapper";
 import React from "react";
 
