@@ -10,7 +10,7 @@ const page = (): React.ReactElement => {
   if (!isLoaded) return <p>please wait...</p>;
 
   return isSignedIn ? (
-    <Wrapper title={`${user.username}'s Diary`}>
+    <Wrapper title={user.username ? `${user.username}'s Diary` :`${user.emailAddresses} Diary`}>
       <p>INI MY DIARY</p>
     </Wrapper>
   ) : (

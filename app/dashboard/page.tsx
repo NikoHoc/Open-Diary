@@ -1,3 +1,4 @@
+"use client"
 import CreateDiaryForm from "@/components/dashboard/CreateDiaryForm";
 import Wrapper from "@/components/global/Wrapper";
 import React from "react";
